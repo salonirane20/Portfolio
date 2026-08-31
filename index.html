@@ -5,239 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saloni Narayan Rane — Data Analyst → Data Scientist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#EFEDE5;
-    --paper-raised:#F7F5EE;
-    --ink:#182420;
-    --ink-soft:#4B554F;
-    --teal:#2F5C50;
-    --teal-dim:#5E7B72;
-    --ochre:#A97A3E;
-    --rule:#C7C2B2;
-    --rule-strong:#94907F;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:15px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  .field-bg{
-    position:absolute;
-    top:0; left:0; right:0;
-    height:640px;
-    z-index:0;
-    pointer-events:none;
-    overflow:hidden;
-    background-image:radial-gradient(var(--rule) 1px, transparent 1px);
-    background-size:28px 28px;
-    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 92%);
-    mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 92%);
-  }
-  .field-bg svg{position:absolute;top:0;right:0;width:min(70vw,780px);height:100%;opacity:.55;}
-  .hero, .topbar, .stat-row{position:relative;z-index:1;}
-  ::selection{background:var(--teal);color:var(--paper-raised);}
-  a{color:var(--teal);text-decoration:none;border-bottom:1px solid var(--rule-strong);transition:border-color .15s ease, color .15s ease;}
-  a:hover{color:var(--ochre);border-color:var(--ochre);}
-  :focus-visible{outline:2px solid var(--ochre);outline-offset:2px;}
-
-  .wrap{max-width:940px;margin:0 auto;padding:0 32px;position:relative;}
-  body > .wrap{overflow:visible;}
-
-  /* ---------- STICKY NAV ---------- */
-  .topbar{
-    position:sticky;top:0;z-index:50;
-    background:rgba(239,237,229,.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--rule);
-  }
-  .topbar .wrap{
-    display:flex;align-items:center;justify-content:space-between;
-    padding-top:16px;padding-bottom:16px;
-  }
-  .topbar .brand{
-    font-family:'Newsreader', serif;
-    font-weight:500;
-    font-size:16px;
-    color:var(--ink);
-  }
-  .topbar nav{display:flex;align-items:center;gap:26px;}
-  .topbar nav a{
-    font-size:11.5px;
-    color:var(--ink-soft);
-    border-bottom:none;
-  }
-  .topbar nav a:hover{color:var(--ochre);}
-  .btn-resume{
-    border:1px solid var(--ink);
-    padding:7px 14px;
-    font-size:11px;
-    color:var(--ink);
-    border-bottom:1px solid var(--ink);
-    white-space:nowrap;
-  }
-  .btn-resume:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-
-  @media (max-width:680px){
-    .topbar nav a:not(.btn-resume){display:none;}
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{padding:80px 0 0;}
-  .hero h1{
-    font-family:'Newsreader', serif;
-    font-weight:500;
-    font-size:clamp(38px, 6vw, 60px);
-    line-height:1.05;
-    letter-spacing:-0.01em;
-    color:var(--ink);
-  }
-  .hero .role{
-    font-family:'Newsreader', serif;
-    font-style:italic;
-    font-weight:400;
-    font-size:clamp(17px,2.2vw,20px);
-    color:var(--teal);
-    margin-top:10px;
-  }
-  .hero .lede{
-    max-width:56ch;
-    margin-top:26px;
-    font-size:14px;
-    color:var(--ink-soft);
-    line-height:1.75;
-  }
-
-  /* stat row */
-  .stat-row{
-    display:flex;flex-wrap:wrap;
-    margin-top:40px;
-    border-top:1px solid var(--rule-strong);
-    border-bottom:1px solid var(--rule-strong);
-  }
-  .stat-cell{
-    padding:14px 20px 14px 0;
-    margin-right:20px;
-    border-right:1px solid var(--rule);
-    opacity:0;transform:translateY(4px);
-    animation:cellIn .5s ease forwards;
-  }
-  .stat-cell:last-child{border-right:none;margin-right:0;}
-  .stat-cell .num{
-    font-family:'Newsreader', serif;
-    font-size:26px;
-    font-weight:500;
-    color:var(--teal);
-    display:block;
-  }
-  .stat-cell .lbl{font-size:10.5px;color:var(--ink-soft);margin-top:2px;display:block;}
-  .stat-cell:nth-child(1){animation-delay:.05s;}
-  .stat-cell:nth-child(2){animation-delay:.15s;}
-  .stat-cell:nth-child(3){animation-delay:.25s;}
-  .stat-cell:nth-child(4){animation-delay:.35s;}
-  @keyframes cellIn{to{opacity:1;transform:translateY(0);}}
-  @media (prefers-reduced-motion: reduce){.stat-cell{animation:none;opacity:1;transform:none;}}
-
-  /* ledger contact row */
-  .ledger-row{display:flex;flex-wrap:wrap;margin-top:18px;}
-  .ledger-cell{padding:8px 18px 8px 0;margin-right:18px;font-size:12px;color:var(--ink-soft);}
-  .ledger-cell span{display:block;font-size:9.5px;letter-spacing:.02em;color:var(--rule-strong);margin-bottom:3px;}
-  .ledger-cell a{color:var(--ink);border-bottom:1px solid var(--rule-strong);}
-  .ledger-cell a:hover{color:var(--ochre);border-color:var(--ochre);}
-
-  /* ---------- SECTIONS ---------- */
-  section{padding:60px 0;border-bottom:1px solid var(--rule);scroll-margin-top:70px;}
-  section:last-of-type{border-bottom:none;}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;}
-  .sec-head h2{font-family:'Newsreader', serif;font-weight:500;font-size:25px;color:var(--ink);}
-  .sec-head .sec-num{font-size:11px;color:var(--rule-strong);}
-
-  /* ---------- SUMMARY ---------- */
-  .summary p{
-    font-family:'Newsreader', serif;
-    font-size:18px;
-    line-height:1.65;
-    color:var(--ink);
-    max-width:66ch;
-  }
-
-  /* ---------- EXPERIENCE ---------- */
-  .exp-row{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--rule);}
-  .exp-row:last-child{padding-bottom:0;}
-  .exp-date{font-size:12px;color:var(--teal);line-height:1.6;}
-  .exp-mode{display:flex;align-items:center;gap:6px;color:var(--rule-strong);margin-top:5px;}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--rule-strong);display:inline-block;}
-  .dot.live{background:var(--teal);box-shadow:0 0 0 3px rgba(47,92,80,.18);}
-  .exp-role{font-family:'Newsreader', serif;font-size:19px;font-weight:500;color:var(--ink);}
-  .exp-company{color:var(--ink-soft);font-family:'Newsreader', serif;font-style:italic;font-size:16px;}
-  .exp-bullets{margin-top:12px;list-style:none;}
-  .exp-bullets li{position:relative;padding-left:16px;margin-top:8px;font-size:13px;color:var(--ink-soft);line-height:1.65;}
-  .exp-bullets li::before{content:"–";position:absolute;left:0;color:var(--ochre);}
-
-  /* ---------- SKILLS ---------- */
-  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 32px;}
-  .skill-group span.label{display:block;font-size:11px;color:var(--rule-strong);margin-bottom:10px;}
-  .tags{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag{border:1px solid var(--rule-strong);padding:5px 10px;font-size:12px;color:var(--ink);background:var(--paper-raised);}
-
-  /* ---------- PROJECTS ---------- */
-  .proj-list{display:flex;flex-direction:column;}
-  .proj{display:grid;grid-template-columns:1fr 2fr;gap:24px;padding:22px 0;border-top:1px solid var(--rule);}
-  .proj:last-child{padding-bottom:0;}
-  .proj-name{font-family:'Newsreader', serif;font-size:19px;font-weight:500;color:var(--ink);}
-  .proj-desc{font-size:13px;color:var(--ink-soft);line-height:1.7;}
-  .proj-stack{margin-top:8px;font-size:11px;color:var(--teal);}
-
-  /* ---------- EDUCATION / CERTS ---------- */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
-  @media (max-width:680px){.two-col{grid-template-columns:1fr;}}
-  .edu-item{padding:16px 0;border-top:1px solid var(--rule);}
-  .edu-item:first-child{border-top:none;}
-  .edu-school{font-family:'Newsreader', serif;font-size:16px;color:var(--ink);}
-  .edu-degree{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
-  .edu-score{font-size:11px;color:var(--teal);margin-top:4px;}
-  .cert-item{padding:12px 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-soft);}
-  .cert-item:first-child{border-top:none;}
-  .cert-item .issuer{color:var(--rule-strong);font-size:11px;display:block;margin-top:3px;}
-
-  /* ---------- FOOTER ---------- */
-  footer{padding:56px 0 80px;}
-  footer .ftitle{font-family:'Newsreader', serif;font-style:italic;font-size:22px;color:var(--ink);max-width:42ch;margin-bottom:24px;}
-  footer .flinks{display:flex;flex-wrap:wrap;gap:24px;font-size:12.5px;}
-  footer .fmeta{margin-top:36px;font-size:10.5px;color:var(--rule-strong);}
-
-  @media (max-width:640px){
-    .hero{padding-top:56px;}
-    .wrap{padding:0 20px;}
-    .exp-row, .proj{grid-template-columns:1fr;gap:8px;}
-    .stat-row{flex-wrap:wrap;}
-    .stat-cell{width:47%;border-right:none;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:12px;}
-  }
-
-  @media print{
-    .topbar{position:static;}
-    .btn-resume{display:none;}
-    body{background:#fff;}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">Saloni Rane</div>
+    <a class="brand" href="index.html">Saloni Rane</a>
     <nav>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a class="btn-resume" href="Saloni-Rane-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="experience.html">Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="education.html">Education</a>
     </nav>
   </div>
 </div>
@@ -246,10 +27,8 @@
 
   <div class="field-bg">
     <svg viewBox="0 0 500 640" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMin slice">
-      <!-- wandering sparkline -->
       <polyline points="10,420 60,380 110,440 160,340 210,390 260,300 310,350 360,260 410,300 460,220"
                 fill="none" stroke="#2F5C50" stroke-width="1.5" opacity="0.5"/>
-      <!-- scatter field -->
       <g fill="#2F5C50">
         <circle cx="40" cy="90" r="3" opacity="0.5"/>
         <circle cx="120" cy="60" r="2" opacity="0.35"/>
@@ -270,7 +49,6 @@
         <circle cx="420" cy="200" r="2.5" opacity="0.4"/>
         <circle cx="90" cy="130" r="2" opacity="0.4"/>
       </g>
-      <!-- faint connecting lines between nearby scatter points -->
       <g stroke="#94907F" stroke-width="0.6" opacity="0.35">
         <line x1="40" y1="90" x2="120" y2="60"/>
         <line x1="120" y1="60" x2="200" y2="130"/>
@@ -279,7 +57,6 @@
         <line x1="150" y1="240" x2="300" y2="220"/>
         <line x1="300" y1="220" x2="380" y2="260"/>
       </g>
-      <!-- small bar cluster, unlabeled, purely textural -->
       <g fill="#C7C2B2" opacity="0.6">
         <rect x="420" y="330" width="8" height="40"/>
         <rect x="432" y="310" width="8" height="60"/>
@@ -296,7 +73,6 @@
 
     <div class="ledger-row">
       <div class="ledger-cell"><span>Location</span>Lower Parel, Mumbai</div>
-      <div class="ledger-cell"><span>Phone</span>9167031486</div>
       <div class="ledger-cell"><span>Email</span><a href="mailto:ranesaloni20@gmail.com">ranesaloni20@gmail.com</a></div>
       <div class="ledger-cell"><span>LinkedIn</span><a href="https://www.linkedin.com/in/saloni-rane-6363a7286" target="_blank" rel="noopener">saloni-rane</a></div>
       <div class="ledger-cell"><span>GitHub</span><a href="https://github.com/salonirane20" target="_blank" rel="noopener">salonirane20</a></div>
@@ -305,7 +81,7 @@
 
   <div class="stat-row">
     <div class="stat-cell"><span class="num">9.69</span><span class="lbl">CGPA, B.Sc. Data Science</span></div>
-    <div class="stat-cell"><span class="num">3</span><span class="lbl">roles across analytics &amp; automation</span></div>
+    <div class="stat-cell"><span class="num">2</span><span class="lbl">roles across analytics &amp; automation</span></div>
     <div class="stat-cell"><span class="num">3</span><span class="lbl">tools chained: Apps Script, Python, n8n</span></div>
     <div class="stat-cell"><span class="num">1</span><span class="lbl">live finance automation system in production</span></div>
   </div>
@@ -315,141 +91,17 @@
     <p>I graduated with a 9.69 CGPA in Data Science &amp; Business Analytics, and since then I've worked hands-on with SQL for extraction, Python for modeling and automation, and Excel / Power BI for the reporting layer people actually read. Most of my recent work sits at the intersection of accounting and engineering — reconciling inventory across marketplaces and posting transactions into Tally without a human touching a spreadsheet. My next step is moving from analyst work into full data science: deepening my machine learning and modeling practice on top of the automation foundation I've already built.</p>
   </section>
 
-  <section id="experience">
-    <div class="sec-head"><h2>Experience</h2><span class="sec-num">02</span></div>
-
-    <div class="exp-row">
-      <div class="exp-date">May 2026 — Present<span class="exp-mode"><span class="dot live"></span>Onsite</span></div>
-      <div>
-        <div class="exp-role">Jr. Data Analyst</div>
-        <div class="exp-company">Nasher Miles Pvt Ltd.</div>
-        <ul class="exp-bullets">
-          <li>Architected a finance automation system in Python that posts sales and purchase data directly into TallyPrime, replacing manual entry.</li>
-          <li>Extended the system with automated MIS reporting, generating management-ready reports directly from posted data.</li>
-          <li>Built a Vercel-based dashboard to monitor and manage the automation pipeline in real time.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-row">
-      <div class="exp-date">Feb 2026 — May 2026<span class="exp-mode"><span class="dot"></span>Onsite</span></div>
-      <div>
-        <div class="exp-role">Data Analyst Intern</div>
-        <div class="exp-company">Nasher Miles Pvt Ltd.</div>
-        <ul class="exp-bullets">
-          <li>Built and maintained ETL / automation workflows using n8n to streamline data pipelines.</li>
-          <li>Developed operational dashboards using Google Apps Script.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-row">
-      <div class="exp-date">May 2025 — Jun 2025<span class="exp-mode"><span class="dot"></span>Remote</span></div>
-      <div>
-        <div class="exp-role">Data Science Intern</div>
-        <div class="exp-company">Oasis Infobyte</div>
-        <ul class="exp-bullets">
-          <li>Completed hands-on data analytics tasks using Python and structured datasets.</li>
-          <li>Created visualizations to identify trends, patterns, and business insights.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="sec-head"><h2>Skills</h2><span class="sec-num">03</span></div>
-    <div class="skill-grid">
-      <div class="skill-group">
-        <span class="label">Programming &amp; databases</span>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">R</span><span class="tag">MySQL</span>
-          <span class="tag">PostgreSQL</span><span class="tag">n8n</span><span class="tag">Apps Script</span><span class="tag">Vercel</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="label">Analytics &amp; BI</span>
-        <div class="tags">
-          <span class="tag">Advanced Excel</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Dashboards</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="label">Machine learning</span>
-        <div class="tags">
-          <span class="tag">Regression</span><span class="tag">Classification</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="label">Tools &amp; libraries</span>
-        <div class="tags">
-          <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Streamlit</span><span class="tag">VS Code</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="sec-head"><h2>Projects</h2><span class="sec-num">04</span></div>
-    <div class="proj-list">
-      <div class="proj">
-        <div class="proj-name"><a href="https://github.com/salonirane20/Project" target="_blank" rel="noopener">FineCore Analytics Suite</a></div>
-        <div>
-          <div class="proj-desc">An automated financial reporting system that pulls transaction data and turns it into structured reports without manual reconciliation.</div>
-          <div class="proj-stack">Python · Streamlit · PostgreSQL</div>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="proj-name"><a href="https://github.com/salonirane20/Minor-Project-HR%20Aanalytics" target="_blank" rel="noopener">HR Analytics</a></div>
-        <div>
-          <div class="proj-desc">Employee data analysis with a machine learning model to predict attrition risk from workforce patterns.</div>
-          <div class="proj-stack">Python · scikit-learn</div>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="proj-name"><a href="https://github.com/salonirane20/Major-Project-%20%20Product%20Avaliablity" target="_blank" rel="noopener">Product Availability Forecasting</a></div>
-        <div>
-          <div class="proj-desc">Inventory trend analysis and demand prediction to flag stock-out risk ahead of time.</div>
-          <div class="proj-stack">Python · Pandas · Forecasting models</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="sec-head"><h2>Education &amp; certificates</h2><span class="sec-num">05</span></div>
-    <div class="two-col">
-      <div>
-        <div class="edu-item">
-          <div class="edu-school">HSNC University, Worli</div>
-          <div class="edu-degree">B.Sc. Data Science &amp; Business Analytics</div>
-          <div class="edu-score">CGPA 9.69</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-school">Hinduja College of Commerce</div>
-          <div class="edu-degree">HSC</div>
-          <div class="edu-score">90.33%</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-school">Holy Cross High School</div>
-          <div class="edu-degree">SSC</div>
-          <div class="edu-score">89%</div>
-        </div>
-      </div>
-      <div>
-        <div class="cert-item">Machine Learning for Core Engineering Disciplines<span class="issuer">NPTEL</span></div>
-        <div class="cert-item">Data Visualization with Power BI<span class="issuer">Great Learning</span></div>
-        <div class="cert-item">Microsoft Excel — Beginner to Advanced<span class="issuer">Udemy</span></div>
-      </div>
-    </div>
-  </section>
+  <div class="page-nav">
+    <span></span>
+    <a class="next" href="experience.html"><span class="to">Next</span>Experience →</a>
+  </div>
 
   <footer>
     <p class="ftitle">Open to data science roles and opportunities to grow from analytics into full-time modeling work.</p>
     <div class="flinks">
       <a href="mailto:ranesaloni20@gmail.com">ranesaloni20@gmail.com</a>
-      <a href="tel:9167031486">9167031486</a>
       <a href="https://www.linkedin.com/in/saloni-rane-6363a7286" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/salonirane20" target="_blank" rel="noopener">GitHub</a>
-      <a href="Saloni-Rane-Resume.pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
     </div>
     <p class="fmeta">Last updated August 2026</p>
   </footer>
